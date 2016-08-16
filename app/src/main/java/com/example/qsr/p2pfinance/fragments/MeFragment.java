@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.qsr.p2pfinance.R;
 import com.example.qsr.p2pfinance.activities.LoginActivity;
+import com.example.qsr.p2pfinance.activities.UserInfoActivity;
 import com.example.qsr.p2pfinance.base.BaseActivity;
 import com.example.qsr.p2pfinance.base.BaseFragment;
 import com.example.qsr.p2pfinance.bean.Login;
@@ -26,6 +27,7 @@ import com.squareup.picasso.Transformation;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**************************************
  * FileName : com.example.qsr.p2pfinance.fragments
@@ -94,10 +96,13 @@ public class MeFragment extends BaseFragment {
     protected void initTitle() {
         //实例化title
         titleLeft.setVisibility(View.INVISIBLE);
-        titleRight.setVisibility(View.INVISIBLE);
+        titleRight.setVisibility(View.VISIBLE);
         titleText.setText(R.string.me);
     }
-
+    @OnClick(R.id.title_right)
+    public void titleRight(View view){
+        ((BaseActivity)getActivity()).gotoActivity(UserInfoActivity.class,null);
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();
