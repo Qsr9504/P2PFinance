@@ -1,5 +1,7 @@
 package com.example.qsr.p2pfinance.base;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -22,10 +24,13 @@ import butterknife.ButterKnife;
  * Description :
  **************************************/
 public abstract class BaseFragment extends Fragment {
+    protected SharedPreferences sp;
+
     private LoadingPage loadingPage;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        sp = getActivity().getSharedPreferences("user_info", Context.MODE_PRIVATE);
         //声明加载界面
         loadingPage = new LoadingPage(container.getContext()) {
             @Override

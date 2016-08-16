@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.qsr.p2pfinance.app.AppManager;
 import com.example.qsr.p2pfinance.base.BaseActivity;
 import com.example.qsr.p2pfinance.fragments.HomeFragment;
 import com.example.qsr.p2pfinance.fragments.InvestFragment;
@@ -59,6 +60,8 @@ public class MainActivity extends BaseActivity {
     protected void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        //将当前activity管理起来
+        AppManager.getInstance().addActivity(this);
     }
 
     @Override

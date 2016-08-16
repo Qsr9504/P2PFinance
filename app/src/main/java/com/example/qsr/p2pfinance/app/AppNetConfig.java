@@ -7,7 +7,7 @@ package com.example.qsr.p2pfinance.app;
  * Description : 配置程序当中所有的接口请求地址
  **************************************/
 public class AppNetConfig {
-    public static String HOST = "192.168.3.10";//主机地址
+    public static String HOST = "192.168.56.1";//主机地址
 //    public static String HOST = "192.168.1.108";//主机地址
 
     public static final String BASEURL = "http://" + HOST + ":8080/P2PInvest/";
