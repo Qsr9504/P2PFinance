@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.qsr.p2pfinance.MainActivity;
 import com.example.qsr.p2pfinance.R;
 import com.example.qsr.p2pfinance.app.AppManager;
 import com.example.qsr.p2pfinance.base.BaseActivity;
@@ -69,7 +70,28 @@ public class UserInfoActivity extends BaseActivity {
 	private static final int CAMERA = 100;
 
 	private static final int PICTURE = 200;
+	@OnClick(R.id.loginOut)
+	public void loginOut(View view){
+		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("退出登录");
+		builder.setMessage("你确定吗？");
+		builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				getSharedPreferences("user_info",MODE_PRIVATE).edit().clear().commit();
+				AppManager.getInstance().removeAll();
+				gotoActivity(MainActivity.class,null);
+			}
+		});
+		builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+			}
+		});
+		builder.show();
 
+	}
 	@OnClick(R.id.textView1)
 	public void changeTx(View view) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -292,10 +314,4 @@ public class UserInfoActivity extends BaseActivity {
 		return "com.google.android.apps.photos.content".equals(uri.getAuthority());
 	}
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		// TODO: add setContentView(...) invocation
-		ButterKnife.bind(this);
-	}
 }
